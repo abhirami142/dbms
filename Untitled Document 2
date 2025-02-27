@@ -698,5 +698,13 @@ mysql> select c_name,Acc_no,amount from Deposit where customer.cust_id=Deposit.c
 ERROR 1054 (42S22): Unknown column 'c_name' in 'field list'
 mysql> 
 
+select c_name,acc_no,amount from customer,Deposit where customer.cust_id=Deposit.cust_id and length(c_name)=5;
++--------+--------+--------+
+| c_name | acc_no | amount |
++--------+--------+--------+
+| Aswin  | 3004   |  80000 |
++--------+--------+--------+
+1 row in set (0.00 sec)
+
 
 
