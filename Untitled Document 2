@@ -1,3 +1,4 @@
+
 mysql> insert into branch values(2001,'north','cherthala');
 Query OK, 1 row affected (0.13 sec)
 
@@ -705,6 +706,36 @@ select c_name,acc_no,amount from customer,Deposit where customer.cust_id=Deposit
 | Aswin  | 3004   |  80000 |
 +--------+--------+--------+
 1 row in set (0.00 sec)
+
+mysql> select c_name from customer where cust_id in(select cust_id from Deposit)or cust_id in(select cust_id from Borrow);
++----------+
+| c_name   |
++----------+
+| Sam      |
+| Athira   |
+| Anjali   |
+| Aswin    |
+| Abhirami |
+| sulu     |
+| anil     |
+| ashna    |
+| lekshmi  |
++----------+
+9 rows in set (0.00 sec)
+
+mysql> select c_name from customer where cust_id in(select cust_id from Deposit) and cust_id in(select cust_id from Borrow)
+;
++---------+
+| c_name  |
++---------+
+| Aswin   |
+| sulu    |
+| anil    |
+| lekshmi |
++---------+
+4 rows in set (0.00 sec)
+
+mysql> 
 
 
 
