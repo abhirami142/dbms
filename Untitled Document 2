@@ -1,0 +1,702 @@
+mysql> insert into branch values(2001,'north','cherthala');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into branch values(2002,'south','cherthala');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into branch values(2004,'south','aroor');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into branch values(2003,'north','aroor');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into branch values(2004,'north','aroor');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from branch;
++-----------+--------+-----------+
+| branch_id | b_name | city      |
++-----------+--------+-----------+
+| 2001      | north  | cherthala |
+| 2002      | south  | cherthala |
+| 2004      | south  | aroor     |
+| 2003      | north  | aroor     |
+| 2004      | north  | aroor     |
++-----------+--------+-----------+
+5 rows in set (0.01 sec)
+
+mysql> insert into branch values(2005,'north','ernakulam');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into branch values(2006,'south','ernakulam');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from branch;
++-----------+--------+-----------+
+| branch_id | b_name | city      |
++-----------+--------+-----------+
+| 2001      | north  | cherthala |
+| 2002      | south  | cherthala |
+| 2004      | south  | aroor     |
+| 2003      | north  | aroor     |
+| 2004      | north  | aroor     |
+| 2005      | north  | ernakulam |
+| 2006      | south  | ernakulam |
++-----------+--------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> insert into branch values(2007,'south','alappuzha');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into branch values(2008,'north','alappuzha');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from branch;
++-----------+--------+-----------+
+| branch_id | b_name | city      |
++-----------+--------+-----------+
+| 2001      | north  | cherthala |
+| 2002      | south  | cherthala |
+| 2004      | south  | aroor     |
+| 2003      | north  | aroor     |
+| 2004      | north  | aroor     |
+| 2005      | north  | ernakulam |
+| 2006      | south  | ernakulam |
+| 2007      | south  | alappuzha |
+| 2008      | north  | alappuzha |
++-----------+--------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> insert into branch values(2009,'north','kollam');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select * from branch;
++-----------+--------+-----------+
+| branch_id | b_name | city      |
++-----------+--------+-----------+
+| 2001      | north  | cherthala |
+| 2002      | south  | cherthala |
+| 2004      | south  | aroor     |
+| 2003      | north  | aroor     |
+| 2004      | north  | aroor     |
+| 2005      | north  | ernakulam |
+| 2006      | south  | ernakulam |
+| 2007      | south  | alappuzha |
+| 2008      | north  | alappuzha |
+| 2009      | north  | kollam    |
++-----------+--------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> insert into deposit values(3001,1002,2002,20000,'2012-12-13');
+ERROR 1146 (42S02): Table 'abhirami.deposit' doesn't exist
+mysql> insert into Deposit values(3001,1002,2002,20000,'2012-12-13');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from deposit;
+ERROR 1146 (42S02): Table 'abhirami.deposit' doesn't exist
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |   2002 | 20000     | 2012-12-13 |
++--------+---------+--------+-----------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into Deposit values(3002,1005,40000,2002,'2013-01-10');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert int Deposit values(3003,1006,50000,2003,'2020-05-20');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int Deposit values(3003,1006,50000,2003,'2020-05-20')' at line 1
+mysql> insert into Deposit values(3003,1006,50000,2003,'2020-05-20');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Deposit values(3004,1004,80000,2004,'2022-06-06');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into Deposit values(3005,1003,100000,2001,'2012-05-05');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into Deposit values(3006,1010,100,2003,'2017-08-11');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |   2002 | 20000     | 2012-12-13 |
+| 3002   | 1005    |  40000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
++--------+---------+--------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into Deposit values(3007,1011,2000,2005,'2016-10-11');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Deposit values(3008,1013,20030,2007,'2023-12-18');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into Deposit values(3009,1014,5000,2009,'2024-05-301');
+ERROR 1292 (22007): Incorrect date value: '2024-05-301' for column 'open_date' at row 1
+mysql> insert into Deposit values(3009,1014,5000,2009,'2024-05-30');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |   2002 | 20000     | 2012-12-13 |
+| 3002   | 1005    |  40000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1011    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
++--------+---------+--------+-----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> insert into Deposit values(3012,1017,4810,2010,'2001-04-03');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |   2002 | 20000     | 2012-12-13 |
+| 3002   | 1005    |  40000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1011    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
+| 3012   | 1017    |   4810 | 2010      | 2001-04-03 |
++--------+---------+--------+-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> insert into Borrow values(4001,1001,2004,10000),
+[1]+  Stopped                 sudo mysql -u root
+cec@user:~$ sudo mysql -u root;
+[sudo] password for cec: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.33-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use abhirami;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> desc Deposit;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Acc_no    | varchar(10) | NO   | PRI | NULL    |       |
+| cust_id   | varchar(10) | NO   |     | NULL    |       |
+| amount    | int         | YES  |     | NULL    |       |
+| Branch_id | varchar(5)  | YES  |     | NULL    |       |
+| open_date | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from Borrow;
+Empty set (0.01 sec)
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |   2002 | 20000     | 2012-12-13 |
+| 3002   | 1005    |  40000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1011    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
+| 3012   | 1017    |   4810 | 2010      | 2001-04-03 |
++--------+---------+--------+-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> nsert into Borrow values(4001,1001,2004,10000),
+    -> insert into Borrow values(4001,1001,2004,10000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nsert into Borrow values(4001,1001,2004,10000),
+insert into Borrow values(4001,1' at line 1
+mysql> insert into borrow values(4001,1001,2004,10000);
+ERROR 1146 (42S02): Table 'abhirami.borrow' doesn't exist
+mysql> insert into Borrow values(4001,1001,2004,10000);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into Borrow values(4002,1007,2001,20000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Borrow values(4003,1006,2003,30000);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Borrow values(4004,1009,2004,50000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Borrow values(4005,1004,2001,150000);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into Borrow values(4006,1009,2008,15000);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from Borrow;
++---------+---------+-----------+--------+
+| loan_no | cust_id | branch_id | amount |
++---------+---------+-----------+--------+
+| 4001    | 1001    | 2004      |  10000 |
+| 4002    | 1007    | 2001      |  20000 |
+| 4003    | 1006    | 2003      |  30000 |
+| 4004    | 1009    | 2004      |  50000 |
+| 4005    | 1004    | 2001      | 150000 |
+| 4006    | 1009    | 2008      |  15000 |
++---------+---------+-----------+--------+
+6 rows in set (0.00 sec)
+
+mysql> insert into Borrow values(4007,1010,2006,200000);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into Borrow values(4008,1011,2007,300030);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from Borrow;
++---------+---------+-----------+--------+
+| loan_no | cust_id | branch_id | amount |
++---------+---------+-----------+--------+
+| 4001    | 1001    | 2004      |  10000 |
+| 4002    | 1007    | 2001      |  20000 |
+| 4003    | 1006    | 2003      |  30000 |
+| 4004    | 1009    | 2004      |  50000 |
+| 4005    | 1004    | 2001      | 150000 |
+| 4006    | 1009    | 2008      |  15000 |
+| 4007    | 1010    | 2006      | 200000 |
+| 4008    | 1011    | 2007      | 300030 |
++---------+---------+-----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> insert into Borrow values(4004,1016,2009,500000);
+ERROR 1062 (23000): Duplicate entry '4004' for key 'Borrow.PRIMARY'
+mysql> insert into Borrow values(4009,1016,2009,500000);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Borrow values(4010,1016,2002,500000);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from Borrow;
++---------+---------+-----------+--------+
+| loan_no | cust_id | branch_id | amount |
++---------+---------+-----------+--------+
+| 4001    | 1001    | 2004      |  10000 |
+| 4002    | 1007    | 2001      |  20000 |
+| 4003    | 1006    | 2003      |  30000 |
+| 4004    | 1009    | 2004      |  50000 |
+| 4005    | 1004    | 2001      | 150000 |
+| 4006    | 1009    | 2008      |  15000 |
+| 4007    | 1010    | 2006      | 200000 |
+| 4008    | 1011    | 2007      | 300030 |
+| 4009    | 1016    | 2009      | 500000 |
+| 4010    | 1016    | 2002      | 500000 |
++---------+---------+-----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> update deposit set amount=20000 where branch_id=2002;
+ERROR 1146 (42S02): Table 'abhirami.deposit' doesn't exist
+mysql> update Deposit set amount=20000 where branch_id=2002;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |   2002 | 20000     | 2012-12-13 |
+| 3002   | 1005    |  20000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1011    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
+| 3012   | 1017    |   4810 | 2010      | 2001-04-03 |
++--------+---------+--------+-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update Deposit set amount=20000 where Branch_id=2002;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update Deposit set amount=20000 where Branch_id=20000;
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |  20000 | 20000     | 2012-12-13 |
+| 3002   | 1005    |  20000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1011    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
+| 3012   | 1017    |   4810 | 2010      | 2001-04-03 |
++--------+---------+--------+-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> update Deposit Branch_id=2000 where Branch_id=20000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=2000 where Branch_id=20000' at line 1
+mysql> update Deposit Branch_id=2000 where Acc_no=3001;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=2000 where Acc_no=3001' at line 1
+mysql> update Deposit set Branch_id=2000 where Acc_no=3001;
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |  20000 | 2000      | 2012-12-13 |
+| 3002   | 1005    |  20000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1011    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
+| 3012   | 1017    |   4810 | 2010      | 2001-04-03 |
++--------+---------+--------+-----------+------------+
+10 rows in set (0.01 sec)
+
+mysql> insert into customer values(1001,'Sam','kozhikode')
+    -> ;
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into customer values(1002,'Athira','kollam')
+    -> ;
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into customer values(1003,'Anjali','malappuram');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into customer values(1004,'Aswin','Thrissur');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into customer values(1005,'Abhirami','Pathanamthitta');
+ERROR 1406 (22001): Data too long for column 'city' at row 1
+mysql> insert into customer values(1005,'Abhirami','alappuzha');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into customer values(1006,'sulu','aroor');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into customer values(1007,'anil','cherthala');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from customer;
++---------+----------+------------+
+| cust_id | c_name   | city       |
++---------+----------+------------+
+| 1001    | Sam      | kozhikode  |
+| 1002    | Athira   | kollam     |
+| 1003    | Anjali   | malappuram |
+| 1004    | Aswin    | Thrissur   |
+| 1005    | Abhirami | alappuzha  |
+| 1006    | sulu     | aroor      |
+| 1007    | anil     | cherthala  |
++---------+----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into customer values(1008,'alpha','cherthala');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into customer values(1009,'ashna','kollam');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into customer values(1010,'lekshmi','cherthala');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from customer;
++---------+----------+------------+
+| cust_id | c_name   | city       |
++---------+----------+------------+
+| 1001    | Sam      | kozhikode  |
+| 1002    | Athira   | kollam     |
+| 1003    | Anjali   | malappuram |
+| 1004    | Aswin    | Thrissur   |
+| 1005    | Abhirami | alappuzha  |
+| 1006    | sulu     | aroor      |
+| 1007    | anil     | cherthala  |
+| 1008    | alpha    | cherthala  |
+| 1009    | ashna    | kollam     |
+| 1010    | lekshmi  | cherthala  |
++---------+----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select cust_id,c_name from customer;
++---------+----------+
+| cust_id | c_name   |
++---------+----------+
+| 1001    | Sam      |
+| 1002    | Athira   |
+| 1003    | Anjali   |
+| 1004    | Aswin    |
+| 1005    | Abhirami |
+| 1006    | sulu     |
+| 1007    | anil     |
+| 1008    | alpha    |
+| 1009    | ashna    |
+| 1010    | lekshmi  |
++---------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select cust_id,amount from deposit where amount>10000;
+ERROR 1146 (42S02): Table 'abhirami.deposit' doesn't exist
+mysql> select cust_id,amount from Deposit where amount>10000;
++---------+--------+
+| cust_id | amount |
++---------+--------+
+| 1002    |  20000 |
+| 1005    |  20000 |
+| 1006    |  50000 |
+| 1004    |  80000 |
+| 1003    | 100000 |
+| 1013    |  20030 |
++---------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select open_date from Deposit where cust_id=(select cust_id from Deposit where c_name='anil');
+ERROR 1054 (42S22): Unknown column 'c_name' in 'where clause'
+mysql> desc Deposit;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Acc_no    | varchar(10) | NO   | PRI | NULL    |       |
+| cust_id   | varchar(10) | NO   |     | NULL    |       |
+| amount    | int         | YES  |     | NULL    |       |
+| Branch_id | varchar(5)  | YES  |     | NULL    |       |
+| open_date | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select open_date from Deposit where cust_id=(select cust_id from customer where c_name='anil');
+Empty set (0.00 sec)
+
+mysql> update Deposit set values cust_id=1007 where Acc_no=3007;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values cust_id=1007 where Acc_no=3007' at line 1
+mysql> update Deposit set cust_id=1007 where Acc_no=3007;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |  20000 | 2000      | 2012-12-13 |
+| 3002   | 1005    |  20000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1007    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
+| 3012   | 1017    |   4810 | 2010      | 2001-04-03 |
++--------+---------+--------+-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select open_date from Deposit where cust_id=(select cust_id from customer where c_name='anil');
++------------+
+| open_date  |
++------------+
+| 2016-10-11 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> update Deposit set open_date='2016-01-01' where Acc_no=3001;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Deposit;
++--------+---------+--------+-----------+------------+
+| Acc_no | cust_id | amount | Branch_id | open_date  |
++--------+---------+--------+-----------+------------+
+| 3001   | 1002    |  20000 | 2000      | 2016-01-01 |
+| 3002   | 1005    |  20000 | 2002      | 2013-01-10 |
+| 3003   | 1006    |  50000 | 2003      | 2020-05-20 |
+| 3004   | 1004    |  80000 | 2004      | 2022-06-06 |
+| 3005   | 1003    | 100000 | 2001      | 2012-05-05 |
+| 3006   | 1010    |    100 | 2003      | 2017-08-11 |
+| 3007   | 1007    |   2000 | 2005      | 2016-10-11 |
+| 3008   | 1013    |  20030 | 2007      | 2023-12-18 |
+| 3009   | 1014    |   5000 | 2009      | 2024-05-30 |
+| 3012   | 1017    |   4810 | 2010      | 2001-04-03 |
++--------+---------+--------+-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select cust_id from Deposit where open_date>2016-01-01;
++---------+
+| cust_id |
++---------+
+| 1002    |
+| 1005    |
+| 1006    |
+| 1004    |
+| 1003    |
+| 1010    |
+| 1007    |
+| 1013    |
+| 1014    |
+| 1017    |
++---------+
+10 rows in set, 1 warning (0.02 sec)
+
+mysql> select cust_id from Deposit where open_date>'2016-01-01';
++---------+
+| cust_id |
++---------+
+| 1006    |
+| 1004    |
+| 1010    |
+| 1007    |
+| 1013    |
+| 1014    |
++---------+
+6 rows in set (0.00 sec)
+
+mysql> select Acc_no,cust_id from Deposit where amount between 40000 and 80000;
++--------+---------+
+| Acc_no | cust_id |
++--------+---------+
+| 3003   | 1006    |
+| 3004   | 1004    |
++--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select c_name from customer where c_name like's%';
++--------+
+| c_name |
++--------+
+| Sam    |
+| sulu   |
++--------+
+2 rows in set (0.01 sec)
+
+mysql> select c_name from customer where cust_id in (select cust_id from deposit where c_name like '-a%');
+ERROR 1146 (42S02): Table 'abhirami.deposit' doesn't exist
+mysql> select c_name from customer where cust_id in (select cust_id from Deposit where c_name like '-a%');
+Empty set (0.00 sec)
+
+mysql> select c_name from customer where c_name like'a%';
++----------+
+| c_name   |
++----------+
+| Athira   |
+| Anjali   |
+| Aswin    |
+| Abhirami |
+| anil     |
+| alpha    |
+| ashna    |
++----------+
+7 rows in set (0.00 sec)
+
+mysql> select c_name from Deposits where c_name like'a%';
+ERROR 1146 (42S02): Table 'abhirami.Deposits' doesn't exist
+mysql> select c_name from Deposit where c_name like'a%';
+ERROR 1054 (42S22): Unknown column 'c_name' in 'field list'
+mysql> select c_name from customer where cust_id in (select cust_id from Deposit where c_name like '-a%');
+Empty set (0.00 sec)
+
+mysql> select c_name from Deposit where c_name like'%a%';
+ERROR 1054 (42S22): Unknown column 'c_name' in 'field list'
+mysql> select c_name from customer where c_name like'%a%';
++----------+
+| c_name   |
++----------+
+| Sam      |
+| Athira   |
+| Anjali   |
+| Aswin    |
+| Abhirami |
+| anil     |
+| alpha    |
+| ashna    |
++----------+
+8 rows in set (0.01 sec)
+
+mysql> select customer.c_name,Deposit.acc_no,Deposit.amount from customer_Deposit where customer.cust_id=Deposit.cust_id and length(customer.c_name)=5;
+ERROR 1146 (42S02): Table 'abhirami.customer_Deposit' doesn't exist
+mysql> select loan_no,cust_id,Branch_id from Borrow;
++---------+---------+-----------+
+| loan_no | cust_id | Branch_id |
++---------+---------+-----------+
+| 4001    | 1001    | 2004      |
+| 4002    | 1007    | 2001      |
+| 4003    | 1006    | 2003      |
+| 4004    | 1009    | 2004      |
+| 4005    | 1004    | 2001      |
+| 4006    | 1009    | 2008      |
+| 4007    | 1010    | 2006      |
+| 4008    | 1011    | 2007      |
+| 4009    | 1016    | 2009      |
+| 4010    | 1016    | 2002      |
++---------+---------+-----------+
+10 rows in set (0.01 sec)
+
+mysql> select c_name,cust_id from customer where cust_id in(select cust_id from Deposit);
++----------+---------+
+| c_name   | cust_id |
++----------+---------+
+| Athira   | 1002    |
+| Anjali   | 1003    |
+| Aswin    | 1004    |
+| Abhirami | 1005    |
+| sulu     | 1006    |
+| anil     | 1007    |
+| lekshmi  | 1010    |
++----------+---------+
+7 rows in set (0.02 sec)
+
+mysql> select c_name from customer where cust_id in(select cust_id from Deposit)and cust_id not in(select cust_id from borrow);
+ERROR 1146 (42S02): Table 'abhirami.borrow' doesn't exist
+mysql> select c_name from customer where cust_id in(select cust_id from Deposit)and cust_id not in(select cust_id from Borrow);
++----------+
+| c_name   |
++----------+
+| Athira   |
+| Anjali   |
+| Abhirami |
++----------+
+3 rows in set (0.01 sec)
+
+mysql> select c_name,acc_no,amount from Deposit where customer.cust_id=Deposit.cust_id and length(c_name)=5;
+ERROR 1054 (42S22): Unknown column 'c_name' in 'field list'
+mysql> select c_name,Acc_no,amount from Deposit where customer.cust_id=Deposit.cust_id and length(c_name)=5;
+ERROR 1054 (42S22): Unknown column 'c_name' in 'field list'
+mysql> select c_name,Acc_no,amount from Deposit where customer.cust_id=Deposit.cust_id and length(c_name)=5;
+ERROR 1054 (42S22): Unknown column 'c_name' in 'field list'
+mysql> 
+
+
+
