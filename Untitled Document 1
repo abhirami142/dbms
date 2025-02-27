@@ -1,0 +1,328 @@
+cec@user:~$ sudo mysql -u root
+[sudo] password for cec: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.33-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database abhirami
+    -> ;
+Query OK, 1 row affected (0.24 sec)
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Amrutha            |
+| abhirami           |
+| bank               |
+| bank1              |
+| cec                |
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+11 rows in set (0.05 sec)
+
+mysql> use abhirami;
+Database changed
+mysql> create table CUSTOMER(cust_idvarchar(10)Primary key,c_name varchar(15) not null,city varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(10)Primary key,c_name varchar(15) not null,city varchar(10))' at line 1
+mysql> create table CUSTOMER(cust_id varchar(10) Primary key,c_name varchar(15) not null,city varchar(10));
+Query OK, 0 rows affected (0.67 sec)
+
+mysql> desc CUSTOMER;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| cust_id | varchar(10) | NO   | PRI | NULL    |       |
+| c_name  | varchar(15) | NO   |     | NULL    |       |
+| city    | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table Branch(Branch_id varchar(5) primary key,bname varchar(15),city varchar(10));
+Query OK, 0 rows affected (0.65 sec)
+
+mysql> desc Branch
+    -> ;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Branch_id | varchar(5)  | NO   | PRI | NULL    |       |
+| bname     | varchar(15) | YES  |     | NULL    |       |
+| city      | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table Deposit(Acc-no varchar(10) primary key,cust_id varchar(10) not null,Amount int,Branch_id varchar(5),open_date date);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-no varchar(10) primary key,cust_id varchar(10) not null,Amount int,Branch_id va' at line 1
+mysql> create table Deposit(Acc_no varchar(10) primary key,cust_id varchar(10) not null,amount int,Branch_id varchar(5),open_date date);
+Query OK, 0 rows affected (0.66 sec)
+
+mysql> desc Deposit;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Acc_no    | varchar(10) | NO   | PRI | NULL    |       |
+| cust_id   | varchar(10) | NO   |     | NULL    |       |
+| amount    | int         | YES  |     | NULL    |       |
+| Branch_id | varchar(5)  | YES  |     | NULL    |       |
+| open_date | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table Borrow(loan_no  varchar(5) primary key,cust_id varchar(10),branch_id varchar(5) amount int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'amount int)' at line 1
+mysql> create table Borrow(loan_no  varchar(5) primary key,cust_id varchar(10),branch_id varchar(5) amountint);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'amountint)' at line 1
+mysql> create table Borrow(loan_no  varchar(5) primary key,cust_id varchar(10),branch_id varchar(5) amount int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'amount int)' at line 1
+mysql> create table Borrow(loan_no  varchar(5) primary key,cust_id varchar(10),branch_id varchar(5),amount int);
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> desc Borrow
+    -> ;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| loan_no   | varchar(5)  | NO   | PRI | NULL    |       |
+| cust_id   | varchar(10) | YES  |     | NULL    |       |
+| branch_id | varchar(5)  | YES  |     | NULL    |       |
+| amount    | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table CUSTOMER add coloumn address varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'address varchar(20)' at line 1
+mysql> alter table CUSTOMER add  address varchar(20);
+Query OK, 0 rows affected (0.48 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc CUSTOMER
+    -> ;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| cust_id | varchar(10) | NO   | PRI | NULL    |       |
+| c_name  | varchar(15) | NO   |     | NULL    |       |
+| city    | varchar(10) | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table Branch modify branch_id int;
+Query OK, 0 rows affected (2.18 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Branch;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| branch_id | int         | NO   | PRI | NULL    |       |
+| bname     | varchar(15) | YES  |     | NULL    |       |
+| city      | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table CUSTOMER rename coloumn address to new address;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'address to new address' at line 1
+mysql> alter table CUSTOMER rename coloumn address to new_address;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'address to new_address' at line 1
+mysql> alter table CUSTOMER rename column address to new_address;
+Query OK, 0 rows affected (0.89 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc CUSTOMER;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| cust_id     | varchar(10) | NO   | PRI | NULL    |       |
+| c_name      | varchar(15) | NO   |     | NULL    |       |
+| city        | varchar(10) | YES  |     | NULL    |       |
+| new_address | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table CUSTOMER drop new_address;
+Query OK, 0 rows affected (0.45 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc CUSTOMER;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| cust_id | varchar(10) | NO   | PRI | NULL    |       |
+| c_name  | varchar(15) | NO   |     | NULL    |       |
+| city    | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table rename branch to branch1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rename branch to branch1' at line 1
+mysql> alter table branch rename branch1;
+ERROR 1146 (42S02): Table 'abhirami.branch' doesn't exist
+mysql> alter table Branch rename Branch1;
+Query OK, 0 rows affected (0.70 sec)
+
+mysql> desc Branch1;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| branch_id | int         | NO   | PRI | NULL    |       |
+| bname     | varchar(15) | YES  |     | NULL    |       |
+| city      | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create user user1 identified by 'abc123';
+Query OK, 0 rows affected (0.36 sec)
+
+mysql> grant all on CUSTOMER to user1;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> exit;
+Bye
+cec@user:~$ sudo mysql -u user1 -p
+[sudo] password for cec: 
+Sorry, try again.
+[sudo] password for cec: 
+Sorry, try again.
+[sudo] password for cec: 
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.33-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| abhirami           |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.02 sec)
+
+mysql> use abhirami
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_abhirami |
++--------------------+
+| CUSTOMER           |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> exit;
+Bye
+cec@user:~$ sudo mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.33-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use abhirami
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> revoke all on CUSTOMER from user1;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> exit;
+Bye
+cec@user:~$ sudo mysql -u user1 -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.33-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use abhirami
+ERROR 1044 (42000): Access denied for user 'user1'@'%' to database 'abhirami'
+mysql> create table student(roll_no int,name varchar,class varchar);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',class varchar)' at line 1
+mysql> create table student(roll_no int,name varchar(10),class varchar(5));
+ERROR 1046 (3D000): No database selected
+mysql> create table student(rollno int,name varchar(10),class varchar(5));
+ERROR 1046 (3D000): No database selected
+mysql> sudo mysql -u root;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sudo mysql -u root' at line 1
+mysql> sudo mysql -u root
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sudo mysql -u root' at line 1
+mysql> exit
+Bye
+cec@user:~$ sudo mysql -u root
+[sudo] password for cec: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.33-0ubuntu0.20.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use abhirami
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> create table student(rollno int,name varchar(10),class varchar(5));
+Query OK, 0 rows affected (0.72 sec)
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | int         | YES  |     | NULL    |       |
+| name   | varchar(10) | YES  |     | NULL    |       |
+| class  | varchar(5)  | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> 
+
+
