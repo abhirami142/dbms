@@ -1,0 +1,183 @@
+ysql> select * from Loan;
++-------------+------------+-------------+
+| Employee_id | First_name | Loan_amount |
++-------------+------------+-------------+
+|         404 | Ashna      |   100000.00 |
+|         402 | Anil       |  2000000.00 |
+|         401 | Vishnu     |    15000.00 |
+|         403 | Abhirami   |   250000.00 |
+|         405 | Alpha      |    33000.00 |
++-------------+------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select Employee.Employee_id,Employee.First_name,Loan.Loan_Amount from Employee inner join Loan on Employee.Employee_id=Loan.Employee_id;
++-------------+------------+-------------+
+| Employee_id | First_name | Loan_Amount |
++-------------+------------+-------------+
+|         404 | Ashna      |   100000.00 |
+|         402 | Anil       |  2000000.00 |
+|         401 | Vishnu     |    15000.00 |
+|         403 | Abhirami   |   250000.00 |
+|         405 | Alpha      |    33000.00 |
++-------------+------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select Employee.Employee_id,Employee.First_name,Loan.Loan_Amount from Employee left join Loan on Employee.Employee_id=Loan.Employee_id;
++-------------+------------+-------------+
+| Employee_id | First_name | Loan_Amount |
++-------------+------------+-------------+
+|         401 | Vishnu     |    15000.00 |
+|         402 | Anil       |  2000000.00 |
+|         403 | Abhirami   |   250000.00 |
+|         404 | Ashna      |   100000.00 |
+|         405 | Alpha      |    33000.00 |
+|         406 | Lekshmi    |        NULL |
++-------------+------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select Employee.Employee_id,Employee.First_name,Loan.Loan_Amount from Employee right join Loan on Employee.Employee_id=Loan.Employee_id;
++-------------+------------+-------------+
+| Employee_id | First_name | Loan_Amount |
++-------------+------------+-------------+
+|         404 | Ashna      |   100000.00 |
+|         402 | Anil       |  2000000.00 |
+|         401 | Vishnu     |    15000.00 |
+|         403 | Abhirami   |   250000.00 |
+|         405 | Alpha      |    33000.00 |
++-------------+------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select Employee_id,Lastname,First_name from Employee UNION Select Employee_id,First_name,Null from Loan;
++-------------+----------+------------+
+| Employee_id | Lastname | First_name |
++-------------+----------+------------+
+|         401 | M S      | Vishnu     |
+|         402 | C R      | Anil       |
+|         403 | A        | Abhirami   |
+|         404 | N        | Ashna      |
+|         405 | C B      | Alpha      |
+|         406 | Sajeev   | Lekshmi    |
+|         404 | Ashna    | NULL       |
+|         402 | Anil     | NULL       |
+|         401 | Vishnu   | NULL       |
+|         403 | Abhirami | NULL       |
+|         405 | Alpha    | NULL       |
++-------------+----------+------------+
+11 rows in set (0.04 sec)
+
+mysql> select Employee_id,First_name from Employee INTERSECT Select Employee_id,First_name,Null from Loan;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql> select Employee_id,First_name from Employee INTERSECT SELECT Employee_id,First_name,Null from Loan;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql> select Employee_id,First_name from Employee INTERSECT select Employee_id,First_name,Null from Loan;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql> SELECT Employee_id,First_name from Employee INTERSECT SELECT Employee_id,First_name,Null from Loan;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql> SELECT Employee_id, First_name FROM Employee 
+    -> INTERSECT 
+    -> SELECT Employee_id, First_name FROM Loan;
++-------------+------------+
+| Employee_id | First_name |
++-------------+------------+
+|         401 | Vishnu     |
+|         402 | Anil       |
+|         403 | Abhirami   |
+|         404 | Ashna      |
+|         405 | Alpha      |
++-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Employee_id, First_name FROM Employee EXCEPT SELECT Employee_id, First_name FROM Loan;
++-------------+------------+
+| Employee_id | First_name |
++-------------+------------+
+|         406 | Lekshmi    |
++-------------+------------+
+1 row in set (0.01 sec)
+
+mysql> select count(*)as Employee count from Employee JOIN Department on Employee.DEpartment_id=Department.Department_id where;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count from Employee JOIN Department on Employee.DEpartment_id=Department.Departm' at line 1
+mysql> SELECT COUNT(*) AS `Employee count`
+    -> FROM Employee
+    -> JOIN Department ON Employee.Department_id = Department.Department_id
+    -> WHERE Department.Department_name = 'Sales';
+ERROR 1054 (42S22): Unknown column 'Department.Department_name' in 'where clause'
+mysql> SELECT COUNT(*) AS `Employee count` FROM Employee JOIN Department ON Employee.Department_id = Department.Department_id WHERE Department.Name = 'Sales';
++----------------+
+| Employee count |
++----------------+
+|              1 |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> select Employee_id,Lastname,First_name from Employee where Department_id NOT IN(202,205);
++-------------+----------+------------+
+| Employee_id | Lastname | First_name |
++-------------+----------+------------+
+|         406 | Sajeev   | Lekshmi    |
+|         404 | N        | Ashna      |
++-------------+----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select Employee_id,First_name FROM Employee ORDER BY Salary;
++-------------+------------+
+| Employee_id | First_name |
++-------------+------------+
+|         402 | Anil       |
+|         403 | Abhirami   |
+|         401 | Vishnu     |
+|         404 | Ashna      |
+|         405 | Alpha      |
+|         406 | Lekshmi    |
++-------------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select Department.Name,Count(*)As Employee Count FROm Employee JOIN DEpartment ON Employee.DEpartment_id=DEpartment_id GROUP BY Department.Name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Count FROm Employee JOIN DEpartment ON Employee.DEpartment_id=DEpartment_id GROU' at line 1
+mysql> select Department.Name,Count(*)As Employee Count FROM Employee JOIN DEpartment ON Employee.DEpartment_id=DEpartment_id GROUP BY Department.Name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Count FROM Employee JOIN DEpartment ON Employee.DEpartment_id=DEpartment_id GROU' at line 1
+mysql> SELECT Department.Department_name, COUNT(*) AS `Employee Count`
+    -> FROM Employee
+    -> JOIN Department ON Employee.Department_id = Department.Department_id
+    -> GROUP BY Department.Department_name;
+ERROR 1054 (42S22): Unknown column 'Department.Department_name' in 'field list'
+mysql> SELECT Department.Department_name, COUNT(*) AS `Employee Count` FROM Employee JOIN Department ON Employee.Department_id = Department.Department_id GROUP BY Department.Name;
+ERROR 1054 (42S22): Unknown column 'Department.Department_name' in 'field list'
+mysql> SELECT Department.Name, COUNT(*) AS `Employee Count` FROM Employee JOIN Department ON Employee.Department_id = Department.Department_id GROUP BY Department.Name;
++---------+----------------+
+| Name    | Employee Count |
++---------+----------------+
+| IT      |              1 |
+| HR      |              3 |
+| Finance |              1 |
+| Sales   |              1 |
++---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select Department_id from Employee GROUP BY DEpartment_id HAVING COUNT(*)>=2;
++---------------+
+| Department_id |
++---------------+
+|           202 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select COUNT(*) FROM Employee Where year(Hiredate)=1985;
++----------+
+| COUNT(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select Employee_id,First_name FROM EMployee Where Salary=(Select MAX(Salary) FROM Employee);
+ERROR 1146 (42S02): Table 'abhirami.EMployee' doesn't exist
+mysql> select Employee_id,First_name FROM Employee Where Salary=(Select MAX(Salary) FROM Employee);
++-------------+------------+
+| Employee_id | First_name |
++-------------+------------+
+|         406 | Lekshmi    |
++-------------+------------+
+1 row in set (0.00 sec)
+
+mysql> 
