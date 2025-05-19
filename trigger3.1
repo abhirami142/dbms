@@ -1,0 +1,82 @@
+create table purchase(id int,item varchar(20),noofitem int,price int)
+  2  ;
+
+Table created.
+
+SQL> desc purchase;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID						    NUMBER(38)
+ ITEM						    VARCHAR2(20)
+ NOOFITEM					    NUMBER(38)
+ PRICE						    NUMBER(38)
+
+SQL> create table stock(item int,stock_available int);
+
+Table created.
+
+SQL> desc stock;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ITEM						    NUMBER(38)
+ STOCK_AVAILABLE				    NUMBER(38)
+
+SQL> drop table stock;        
+
+Table dropped.
+
+SQL> create table stock(item varchar(20),stock_available int);
+
+Table created.
+
+SQL> desc stock;
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ITEM						    VARCHAR2(20)
+ STOCK_AVAILABLE				    NUMBER(38)
+
+SQL> insert into stock values('Book',100);
+
+1 row created.
+
+SQL> insert into stock values('Pen',100);
+
+1 row created.
+
+SQL> insert into stock values('Pencil',100);
+
+1 row created.
+
+SQL> select * from stock;
+
+ITEM		     STOCK_AVAILABLE
+-------------------- ---------------
+Book				 100
+Pen				 100
+Pencil				 100
+
+SQL> @trigger3.sql
+
+Warning: Trigger created with compilation errors.
+
+SQL> @trigger3.sql
+
+Trigger created.
+
+SQL> set serveroutput on
+SQL> insert into purchase values(01,'Book',4,200);
+stock updated
+
+1 row created.
+
+SQL> select * from stock;
+
+ITEM		     STOCK_AVAILABLE
+-------------------- ---------------
+Book				  96
+Pen				 100
+Pencil				 100
+
+SQL> 
+
+
